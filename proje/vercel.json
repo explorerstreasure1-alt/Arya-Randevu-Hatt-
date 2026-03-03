@@ -1,27 +1,13 @@
 {
   "version": 2,
-  "rewrites": [
-    {
-      "source": "/api/upload-image",
-      "destination": "/api/upload-image.js"
-    },
-    {
-      "source": "/api/delete-image",
-      "destination": "/api/delete-image.js"
-    },
-    {
-      "source": "/((?!api/).*)",
-      "destination": "/arya.html"
-    }
+  "builds": [
+    { "src": "api/*.js", "use": "@vercel/node" },
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "public/**", "use": "@vercel/static" }
   ],
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, DELETE, OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
-      ]
-    }
+  "rewrites": [
+    { "source": "/api/upload-image", "destination": "/api/upload-image.js" },
+    { "source": "/api/delete-image", "destination": "/api/delete-image.js" },
+    { "source": "/((?!api/).*)", "destination": "/arya.html" }
   ]
 }
