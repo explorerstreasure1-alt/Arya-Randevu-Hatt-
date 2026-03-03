@@ -1,13 +1,17 @@
 {
   "version": 2,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "source": "/api/upload-image",
+      "destination": "/api/upload-image.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/arya.html"
+      "source": "/api/delete-image",
+      "destination": "/api/delete-image.js"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/arya.html"
     }
   ],
   "headers": [
